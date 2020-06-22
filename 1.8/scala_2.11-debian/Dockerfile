@@ -21,7 +21,7 @@ FROM openjdk:8-jre
 # Install dependencies
 RUN set -ex; \
   apt-get update; \
-  apt-get -y install libsnappy1v5; \
+  apt-get -y install libsnappy1v5 gettext-base; \
   rm -rf /var/lib/apt/lists/*
 
 # Grab gosu for easy step-down from root
@@ -44,9 +44,9 @@ RUN set -ex; \
   gosu nobody true
 
 # Configure Flink version
-ENV FLINK_VERSION=1.8.2 \
+ENV FLINK_VERSION=1.8.3 \
     SCALA_VERSION=2.11 \
-    GPG_KEY=E2C45417BED5C104154F341085BACB5AEFAE3202
+    GPG_KEY=EF88474C564C7A608A822EEC3FF96A2057B6476C
 
 # Prepare environment
 ENV FLINK_HOME=/opt/flink
